@@ -1,0 +1,12 @@
+The script mitigates active post-exploitation behaviors, but you must manually close the initial access vectors:
+
+[ ] Patch SharePoint: Immediately apply the latest Microsoft Security Updates for CVE-2025-49704, CVE-2025-49706, CVE-2025-53770, and CVE-2025-53771.
+
+[ ] Hunt for Web Shells: Search SharePoint directories (\16\TEMPLATE\LAYOUTS and \inetpub\wwwroot\wss\VirtualDirectories) for newly created or modified .aspx files.
+
+[ ] Update WDAC Policies: Add the hash and certificate of the vulnerable K7RKScan driver to your Windows Defender Application Control (WDAC) blocklist.
+
+[ ] Hunt for NetExec: Audit endpoint logs for NetExec (CrackMapExec) artifacts in C:\Windows\Temp or AppData, and review Event ID 4625 for credential spraying patterns.
+
+⚠️ Disclaimer
+This script modifies the registry, alters system services, and renames driver files. It is provided "as-is" for emergency incident response. Please review the code carefully and test it in a staging environment before deploying it broadly across production servers or Domain Controllers.
